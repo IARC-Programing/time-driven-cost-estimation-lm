@@ -1,0 +1,11 @@
+numpy
+pandas
+matplotlib
+tensor-sensor
+array-to-latex
+scikit-learn
+scipy
+cowsay
+pyfiglet
+seaborn
+statsmodels
