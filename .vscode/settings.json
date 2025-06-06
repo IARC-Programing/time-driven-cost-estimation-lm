@@ -1,0 +1,11 @@
+{
+  "python.analysis.extraPaths": [
+  ],
+  "git.autofetch": "all",
+  "git.blame.editorDecoration.enabled": true,
+  "git.enabled": true,
+  "dataWrangler.columnInsights.displayOnOpen": false,
+  "flake8.args": [
+    "--ignore=E501"
+  ]
+}

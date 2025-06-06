@@ -16,4 +16,8 @@ Install all requirements
 pip install -r requirement.txt
 ```
 
+## Repository Structure
+
+The Model is structure into folder model, functions. The model and functions that related to **model** is located in folder model and the **function** contain the function to do the experiment.
+
 &copy; 2024, Prince of Songkla University under Inteligent Automation Engineering Center
