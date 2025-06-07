@@ -9,3 +9,5 @@ cowsay
 pyfiglet
 seaborn
 statsmodels
+requests
+ipywidgets

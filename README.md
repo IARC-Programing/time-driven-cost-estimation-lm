@@ -12,6 +12,7 @@ Creating ENV followed by `.env.example` and then Creating your virtual environme
 
 ```
 python -m venv venv
+venv/Script/activate
 ```
 
 Install all requirements

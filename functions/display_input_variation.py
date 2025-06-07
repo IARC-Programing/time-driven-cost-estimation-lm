@@ -155,7 +155,7 @@ def display_input_variation_by_directory(folder_name):
         f"{folder_name}/generated_material_usage.csv")
     employee_usage_df = pd.read_csv(
         f"{folder_name}/generated_employee_usage.csv")
-    capital_cost_df = pd.read_csv(f"{folder_name}/generated_captial_cost.csv")
+    capital_cost_df = pd.read_csv(f"{folder_name}/generated_capital_cost.csv")
 
     result_variation = display_input_variation(
         process_df,
