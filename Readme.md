@@ -50,7 +50,7 @@ The model is not fully constructed is file `tdce_model.py` because it depends on
 
 ## Experiment
 
-On the Artifical Neural Network-Like for Manufacturing Cost Estimation, we evaluate the model with the experiment inside the folder `experiment`. We using 4 set of datasets, 3 from simulation and 1 from the actual dataset. The actual dataset is prohibit to display and open. Three simulation datasets consist of **Simple Dataset**, **Complicated Dataset** (High Variation), and **Extended Random Dataset** (High data dimension).
+On the Artifical Neural Network-Like for Manufacturing Cost Estimation Project, we evaluate the model with the experiment inside the folder `experiment`. We using 4 set of datasets, 3 from simulation and 1 from the actual dataset. The actual dataset is prohibit to display and open. Three simulation datasets consist of **Simple Dataset**, **Complicated Dataset** (High Variation), and **Extended Random Dataset** (High data dimension).
 
 ### Data Gathering
 
@@ -65,5 +65,19 @@ For testing or validate our model, without access to the E-Manufac system. The s
 Go to tab **Files and Version** and download their files. File names are initial with the name `generated`. If you want to use our experiment script, please create the directory named `dataset` and then create folder for each set, and put all files of each set insided.
 
 ### Construct Experiment
+
+On our research project, we create the validation experiment as a script, which is located in `experiment/experiment_script.py` the main function name is `run_experiment`.
+
+This require the setting parameters like `data_directory`, `epoch` amount, `folder_name` to keep the result, `round_number` to specify the amount of training replication for preventing the error, `learning_rate_list` for learning rate which used for testing, we can use multiple learning rate at one time you run this script.
+
+We also provide the experimented scenario to choose and test which boolean parameters.
+
+- **Outlier Removal** - Set the `remove_outlier_qtr` to `True` for enable, with using iterquartile range, you can specify the `outlier_index` to remove (the default is `1.5` which refer to 1.5IQR will reject as outliers).
+
+- **Early Stopping** - You can preventing the high validation error and improve model regularization using the early stopping, by enable `early_stopping` as `True` and also can modify the `patience_round` for the model.
+
+- **Data Augmentation** - Enable or Disable Class balacing for the input material by enable the flag `augmentation`.
+
+The script will load the data from the defined directory and use them to perform the experiment.
 
 &copy; 2024, Prince of Songkla University under the Inteligent Automation Engineering Center, Faculty of Engineering.

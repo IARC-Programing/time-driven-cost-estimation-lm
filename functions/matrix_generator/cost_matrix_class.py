@@ -30,7 +30,7 @@ class CostMatrixGenerator:
             f"{self.data_directory}/generated_material_usage.csv"
         )
         self.capital_cost_usage = pd.read_csv(
-            f"{self.data_directory}/generated_captial_cost.csv"
+            f"{self.data_directory}/generated_capital_cost.csv"
         )
 
     def remove_outlier_iqr(self, iqr_index=1.5):
