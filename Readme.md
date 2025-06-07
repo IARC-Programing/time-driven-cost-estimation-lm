@@ -80,4 +80,6 @@ We also provide the experimented scenario to choose and test which boolean param
 
 The script will load the data from the defined directory and use them to perform the experiment.
 
+---
+
 &copy; 2024, Prince of Songkla University under the Inteligent Automation Engineering Center, Faculty of Engineering.
