@@ -2,7 +2,7 @@ import importlib
 import sys
 import getopt
 import os
-import rsg_breakpoint_experiment as rbe
+import experiment.experiment_script as rbe
 importlib.reload(rbe)
 
 learning_rate = [0.005, 0.01, 0.05, 0.1, 0.5]

@@ -42,6 +42,28 @@ On this main class, it located function `fit_with_validation` for a training. Th
 
 ```
 
-For the element-level weight, we pass it to the `back_propagation` function. To make the element-level learnin from the previoused experincanced m
+### Model-Element
 
-&copy; 2024, Prince of Songkla University under Inteligent Automation Engineering Center
+For the element-level weight, we pass it to the `back_propagate` function. To make the element-level learning from the previous iteration error. It adjust their weight and biases using gradient descent-liked algorithm as same as the model-level weight and bias. After the `back_propagate` function is called (in file `network.py`) it will forward into the layer inside the model element (`material_fc_layer.py`,`capital_fc_layer.py`, and `employee_fc_layer.py`).
+
+The model is not fully constructed is file `tdce_model.py` because it depends on the input. We will construt it before we use.
+
+## Experiment
+
+On the Artifical Neural Network-Like for Manufacturing Cost Estimation, we evaluate the model with the experiment inside the folder `experiment`. We using 4 set of datasets, 3 from simulation and 1 from the actual dataset. The actual dataset is prohibit to display and open. Three simulation datasets consist of **Simple Dataset**, **Complicated Dataset** (High Variation), and **Extended Random Dataset** (High data dimension).
+
+### Data Gathering
+
+The three set of data (Simple,Complicated,Actual) is created by upload the based data into IAEC Manufacturing ERP System "E-Manufac" and retrieve the data using REST API. The Code of data retrival can be located at `functions/data_extractor` directory, while the `emanufac_tdabc_extractor_class.py` is the main code. After the data was retrieved, it saved into the CSV file and the code in `adjust_data.py` was employed to intial preprocessing.
+
+For testing or validate our model, without access to the E-Manufac system. The simulation dataset can be downloaded from HuggingFace Dataset (the actual dataset will not provided).
+
+- [Simple Dataset](https://huggingface.co/datasets/theethawats98/tdce-example-simple-dataset)
+- [Complicated Dataset](https://huggingface.co/datasets/theethawats98/tdce-example-complicated-dataset)
+- [Extended Random Dataset](https://huggingface.co/datasets/theethawats98/tdce-example-extended-random)
+
+Go to tab **Files and Version** and download their files. File names are initial with the name `generated`. If you want to use our experiment script, please create the directory named `dataset` and then create folder for each set, and put all files of each set insided.
+
+### Construct Experiment
+
+&copy; 2024, Prince of Songkla University under the Inteligent Automation Engineering Center, Faculty of Engineering.

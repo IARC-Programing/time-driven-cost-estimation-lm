@@ -6,15 +6,14 @@ import time
 import os
 
 # fmt:off
-sys.path.append('../14-New-Final-Model/model')
-sys.path.append('../14-New-Final-Model/matrix_generator')
-sys.path.append('../14-New-Final-Model')
-sys.path.append('../14-New-Final-Model/extractor')
+sys.path.append('../model')
+sys.path.append('../functions/matrix_generator')
+sys.path.append('../functions/data_extractor')
 
 import tdce_model as tdce
 import material_fc_layer as mfl
 import employee_fc_layer as efl
-import captial_fc_layer as cfl
+import capital_fc_layer as cfl
 import loss
 import cost_matrix_class as cmc
 import display_input_variation as diva

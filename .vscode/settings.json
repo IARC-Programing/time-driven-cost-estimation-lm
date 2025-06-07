@@ -1,5 +1,9 @@
 {
   "python.analysis.extraPaths": [
+    "./model",
+    "./functions/matrix_generator",
+    "./functions",
+    "./functions/data_extractor"
   ],
   "git.autofetch": "all",
   "git.blame.editorDecoration.enabled": true,
