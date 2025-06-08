@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-sns.set_theme(style="whitegrid", font="Noto Sans",
-              font_scale=1)
+sns.set_theme(style="whitegrid", font_scale=1)
 this_graph_palette = sns.color_palette("husl", 4)
 sns.set_palette(this_graph_palette)
 
