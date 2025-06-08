@@ -85,6 +85,10 @@ We also provide the experimented scenario to choose and test which boolean param
 
 The script will load the data from the defined directory and use them to perform the experiment.
 
+## Example
+
+For the easier experiment, we provide the Jupyter Notebook file to construct the model and training. You can visit the [Basic Model Construction]('/example/1-Basic-Model-Constructor.ipynb') and if you visit this repo from Huggingface, you can click the button **Open in Collab** to re-run this experiment. Or if you open from GitHub, you can open in GitHub Codespace to run your own Jupyter Notebook.
+
 ---
 
 &copy; 2024, Prince of Songkla University under the Inteligent Automation Engineering Center, Faculty of Engineering.

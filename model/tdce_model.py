@@ -3,6 +3,7 @@ import random
 import pandas as pd
 import importlib
 import time
+import pickle
 
 import material_network as mn
 import time_driven_network as tdn
@@ -539,3 +540,103 @@ class TDCEModel:
 
     def get_sample_payload(self):
         return self.sample_payload
+
+    def export_model(self, filename="tdce_model.pkl"):
+        model_data = {
+            "material_element": self.material_element,
+            "employee_element": self.employee_element,
+            "capital_cost_element": self.capital_cost_element,
+            "weights": self.weights,
+            "bias": self.bias,
+            "loss": self.loss,
+            "loss_prime": self.loss_prime,
+            "loss_percent": self.loss_percent,
+            "material_learning_rate": self.material_learning_rate,
+            "employee_learning_rate": self.employee_learning_rate,
+            "capital_cost_learning_rate": self.capital_cost_learning_rate,
+            "early_stopping": self.use_early_stopping,
+            "patience": self.patience,
+            "use_model_weight": self.use_model_weight,
+            "max_data": self.max_data,
+            "min_data": self.min_data,
+            "weight_list": self.weight_list,
+        }
+
+        pickle.dump(model_data, open(filename, "wb"))
+        print("Model Exported Successfully")
+
+    def load_model(self, filename="tdce_model.pkl"):
+        model_data = pickle.load(open(filename, "rb"))
+        self.material_element = model_data["material_element"]
+        self.employee_element = model_data["employee_element"]
+        self.capital_cost_element = model_data["capital_cost_element"]
+        self.weights = model_data["weights"]
+        self.bias = model_data["bias"]
+        self.loss = model_data["loss"]
+        self.loss_prime = model_data["loss_prime"]
+        self.loss_percent = model_data["loss_percent"]
+        self.material_learning_rate = model_data["material_learning_rate"]
+        self.employee_learning_rate = model_data["employee_learning_rate"]
+        self.capital_cost_learning_rate = model_data[
+            "capital_cost_learning_rate"
+        ]
+        self.use_early_stopping = model_data["early_stopping"]
+        self.patience = model_data["patience"]
+        self.use_model_weight = model_data["use_model_weight"]
+        self.max_data = model_data["max_data"]
+        self.min_data = model_data["min_data"]
+        self.weight_list = model_data["weight_list"]
+        print("Model Loaded Successfully")
+
+    def predict_data(self, payload):
+        # Normalize Payload
+        (
+            normalized_material_cost,
+            normalized_material_amount,
+            normalized_employee_cost,
+            normalized_employee_duration,
+            normalized_employee_day_amount,
+            normalized_capital_cost,
+            normalized_capital_cost_duration,
+            normalized_day_amount,
+        ) = mnorm.normalize_payload(
+            material_cost=payload["material_cost"],
+            material_amount=payload["material_amount"],
+            employee_cost=payload["employee_cost"],
+            employee_duration=payload["employee_duration"],
+            employee_day_amount=payload["employee_day_amount"],
+            capital_cost=payload["capital_cost"],
+            capital_cost_duration=payload["capital_cost_duration"],
+            day_amount=payload["day_amount"],
+            max_data=self.max_data,
+            min_data=self.min_data
+        )
+
+        # Predict Material Cost
+        predicted_mc = self.material_element.predict_sample(
+            cost_input=normalized_material_cost,
+            amount_input=normalized_material_amount
+        )
+
+        # Predict Employee Cost
+        predicted_ec = self.employee_element.predict_sample(
+            cost_input=normalized_employee_cost,
+            time_input=normalized_employee_duration,
+            day_amount=normalized_employee_day_amount
+        )
+
+        # Predict Capital Cost
+        predicted_cc = self.capital_cost_element.predict_sample(
+            cost_input=normalized_capital_cost,
+            time_input=normalized_capital_cost_duration,
+            day_amount=normalized_day_amount,
+        )
+
+        # Combine Result
+        result = (
+            predicted_mc * self.weights[0]
+            + predicted_ec * self.weights[1]
+            + predicted_cc * self.weights[2]
+        ) + self.bias
+
+        return result
