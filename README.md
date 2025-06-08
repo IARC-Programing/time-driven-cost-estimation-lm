@@ -87,7 +87,7 @@ The script will load the data from the defined directory and use them to perform
 
 ## Example
 
-For the easier experiment, we provide the Jupyter Notebook file to construct the model and training. You can visit the [Basic Model Construction](/example/1-Basic-Model-Constructor.ipynb) and if you visit this repo from Huggingface, you can click the button **Open in Collab** to re-run this experiment. Or if you open from GitHub, you can open in GitHub Codespace to run your own Jupyter Notebook.
+For the easier experiment, we provide the Jupyter Notebook file to construct the model and training. In GitHub, You can visit the [1-Basic-Model-Construction.ipynb](/example/1-Basic-Model-Constructor.ipynb) and if you visit this repo from Huggingface, you can go to Huggingface's [1-Basic-Model-Construction.ipynb](https://huggingface.co/iaecpsu-1/tdce-basic/blob/main/example/1-Basic-Model-Constructor.ipynb) and click the button **Open in Collab** to re-run this experiment. Or if you open from GitHub, you can open in GitHub Codespace to run your own Jupyter Notebook.
 
 ---
 
